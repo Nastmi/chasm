@@ -15,45 +15,39 @@ public class InputHandler implements InputProcessor {
 
     public InputHandler(){
         held = new HashMap<>();
-        held.put("left", false);
-        held.put("right", false);
-        held.put("jump", false);
         single = new HashMap<>();
-        single.put("left", false);
-        single.put("right", false);
-        single.put("jump", false);
         bindings = new HashMap<>();
         bindings.put("left", Keys.LEFT);
         bindings.put("right", Keys.RIGHT);
+        bindings.put("up", Keys.UP);
+        bindings.put("down", Keys.DOWN);
         bindings.put("jump", Keys.X);
+        bindings.put("dash", Keys.C);
+        for(String s:bindings.keySet()){
+            single.put(s, false);
+            held.put(s, false);
+        }
     }
 
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == bindings.get("left")){
-            single.put("left", true);
-            held.put("left", true);
-        }
-        else if(keycode == bindings.get("right")){
-            single.put("right", true);
-            held.put("right", true);
-        }
-        else if(keycode == bindings.get("jump")){
-            single.put("jump", true);
-            held.put("jump", true);
+        for(String s:single.keySet()){
+            if(keycode == bindings.get(s)){
+                single.put(s, true);
+                held.put(s, true);
+            }
         }
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        if(keycode == bindings.get("left"))
-            held.put("left", false);
-        else if(keycode == bindings.get("right"))
-            held.put("right", false);
-        else if(keycode == bindings.get("jump"))
-            held.put("jump", false);
+        for(String s:single.keySet()){
+            if(keycode == bindings.get(s)){
+                held.put(s, false);
+            }
+        }
         return false;
     }
 

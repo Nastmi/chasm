@@ -64,6 +64,10 @@ public class Vector2D {
         this.y += s;
     }
 
+    public void negate(){
+        this.set(-this.x, -this.y);
+    }
+
     public String toString(){
         return "x:"+x+"y:"+y;
     }
@@ -74,5 +78,14 @@ public class Vector2D {
 
     public double getY() {
         return y;
+    }
+
+    public double magnitude(){
+        return Math.sqrt((Math.pow(x, 2) + Math.pow(y, 2)));
+    }
+
+    public Vector2D norm(){
+        double mag = this.magnitude();
+        return new Vector2D(x/mag, y/mag);
     }
 }

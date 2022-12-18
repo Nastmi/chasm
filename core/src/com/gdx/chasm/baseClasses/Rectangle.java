@@ -1,27 +1,26 @@
 package com.gdx.chasm.baseClasses;
 
-public class Rectangle {
+public class Rectangle extends CollidableObject{
 
     private double width;
     private double height;
-    private Vector2D position;
 
     public Rectangle(double width, double height, double x, double y) {
+        super(x, y);
         this.width = width;
         this.height = height;
-        this.position = new Vector2D(x, y);
     }
 
     public Rectangle(double width, double height, Vector2D v) {
+        super(v);
         this.width = width;
         this.height = height;
-        this.position = v;
     }
 
     public Rectangle(Rectangle r2){
+        super(r2.getPosition());
         this.width = r2.width;
         this.height = r2.height;
-        this.position = r2.position;
     }
 
     public double getWidth() {
@@ -32,10 +31,6 @@ public class Rectangle {
         return height;
     }
 
-    public Vector2D getPosition() {
-        return position;
-    }
-
     public void setWidth(double width) {
         this.width = width;
     }
@@ -44,9 +39,6 @@ public class Rectangle {
         this.height = height;
     }
 
-    public void setPosition(Vector2D position) {
-        this.position = position;
-    }
 
 
 }
