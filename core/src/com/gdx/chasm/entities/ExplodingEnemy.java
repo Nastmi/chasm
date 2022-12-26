@@ -26,7 +26,6 @@ public class ExplodingEnemy extends StateEnemy{
 
     @Override
     void handleStates() {
-        System.out.println(this.state);
         if(this.state == ExplodingEnemyStates.LOOKOUT){
             this.setCollisionBox(new Rectangle(this.getWidth()+10, this.getHeight()+10, this.getPosition().getX()-5, this.getPosition().getY()-5));
         }
@@ -36,7 +35,6 @@ public class ExplodingEnemy extends StateEnemy{
         if(this.state == ExplodingEnemyStates.EXPLODING){
 
         }
-        System.out.println(lifeTime);
         if(this.lifeTime <= 0)
             this.isDead = true;
     }
@@ -74,11 +72,13 @@ public class ExplodingEnemy extends StateEnemy{
 
     @Override
     public void handleCollision(double intersectX, double intersectY, Entity e){
-        if(e instanceof Player && this.state == ExplodingEnemyStates.LOOKOUT){
-            this.state = ExplodingEnemyStates.IN_CHASE;
-        }
-        else if(this.state == ExplodingEnemyStates.IN_CHASE){
-            this.explodeTimer = 0;
+        if(Math.abs(intersectX) > 0){
+            if(e instanceof Player && this.state == ExplodingEnemyStates.LOOKOUT){
+                this.state = ExplodingEnemyStates.IN_CHASE;
+            }
+            else if(this.state == ExplodingEnemyStates.IN_CHASE){
+                this.explodeTimer = 0;
+            }
         }
     }
 

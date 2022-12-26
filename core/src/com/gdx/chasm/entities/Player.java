@@ -16,6 +16,7 @@ public class Player extends MovableEntity {
     private int[] lastDir;
     private boolean jumpAllowed;
     private boolean dashAllowed;
+    int checkpointNumber;
 
     public Player(double width, double height, double x, double y, double colX, double colY, double collisionWidth, double collisionHeight, Texture texture) {
         super(width, height, x, y, colX, colY, collisionWidth, collisionHeight, texture);
@@ -24,6 +25,7 @@ public class Player extends MovableEntity {
         this.lastDir = new int[]{0, 0};
         this.jumpAllowed = true;
         this.dashAllowed = true;
+        this.checkpointNumber = 0;
     }
 
     public Player(double width, double height, Vector2D position, Vector2D collisionPosition, double collisionWidth, double collisionHeight, Texture texture) {
@@ -166,13 +168,19 @@ public class Player extends MovableEntity {
     @Override
     public void handleCollision(double intersectX, double intersectY, Entity e){
         if(e instanceof ExplodingEnemy){
-            ExplodingEnemy ee = (ExplodingEnemy) e;
-           if(ee.getState() == ExplodingEnemyStates.IN_CHASE || ee.getState() == ExplodingEnemyStates.EXPLODING){
-               this.isDead = true;
-           }
+            if(Math.abs(intersectX) > 0){
+                ExplodingEnemy ee = (ExplodingEnemy) e;
+                if(ee.getState() == ExplodingEnemyStates.IN_CHASE || ee.getState() == ExplodingEnemyStates.EXPLODING){
+                    this.isDead = true;
+                }
+            }
         }
         else if(e instanceof MovableEntity){
             this.isDead = true;
+        }
+        else if(e instanceof Checkpoint){
+            Checkpoint c = (Checkpoint) e;
+            this.checkpointNumber = c.getNumber();
         }
         else{
             this.setPosition(new Vector2D(this.getPosition().getX()+intersectX, this.getPosition().getY()+intersectY));
@@ -186,6 +194,30 @@ public class Player extends MovableEntity {
 
     public PlayerStates getState(){
         return this.state;
+    }
+
+    public double getDashTime() {
+        return dashTime;
+    }
+
+    public double getDefaultDashTime() {
+        return defaultDashTime;
+    }
+
+    public int[] getLastDir() {
+        return lastDir;
+    }
+
+    public boolean isJumpAllowed() {
+        return jumpAllowed;
+    }
+
+    public boolean isDashAllowed() {
+        return dashAllowed;
+    }
+
+    public int getCheckpointNumber() {
+        return checkpointNumber;
     }
 
 }

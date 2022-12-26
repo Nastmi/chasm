@@ -12,6 +12,8 @@ public class InputHandler implements InputProcessor {
     public  static HashMap<String, Boolean> single;
 
     public static HashMap<String, Integer> bindings;
+    public static double[] mousePos;
+    public static boolean mousePressed;
 
     public InputHandler(){
         held = new HashMap<>();
@@ -23,10 +25,13 @@ public class InputHandler implements InputProcessor {
         bindings.put("down", Keys.DOWN);
         bindings.put("jump", Keys.X);
         bindings.put("dash", Keys.C);
+        bindings.put("pause", Keys.ESCAPE);
         for(String s:bindings.keySet()){
             single.put(s, false);
             held.put(s, false);
         }
+        mousePressed = false;
+        mousePos = new double[]{0, 0};
     }
 
 
@@ -63,6 +68,9 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        mousePressed = true;
+        mousePos[0] = screenX;
+        mousePos[1] = screenY;
         return false;
     }
 

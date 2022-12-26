@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DebugRenderer {
 
-    public static void render(ShapeRenderer shapeRenderer, ArrayList<Entity> entities, OrthographicCamera camera){
+    public static void render(ShapeRenderer shapeRenderer, ArrayList<Entity> entities, OrthographicCamera camera, ArrayList<Rectangle> rest){
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(Color.RED);
@@ -20,6 +20,9 @@ public class DebugRenderer {
                 Rectangle r = (Rectangle)e.getCollisionBox();
                 shapeRenderer.rect((float) r.getPosition().getX(), (float)r.getPosition().getY(), (float)r.getWidth(), (float)r.getHeight());
             }
+        }
+        for(Rectangle r:rest){
+            shapeRenderer.rect((float) r.getPosition().getX(), (float)r.getPosition().getY(), (float)r.getWidth(), (float)r.getHeight());
         }
         shapeRenderer.end();
     }

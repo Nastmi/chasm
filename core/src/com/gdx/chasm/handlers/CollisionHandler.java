@@ -62,6 +62,14 @@ public class CollisionHandler {
         return intersections;
     }
 
+    public static boolean pointRectangleCollision(Vector2D point, Rectangle r){
+        Vector2D pos1 = point;
+        Vector2D pos2 = r.getPosition();
+        if(pos1.x > pos2.x && pos1.x < pos2.x + r.getWidth() && pos1.y > pos2.y && pos1.y < pos2.y + r.getHeight())
+            return true;
+        return false;
+    }
+
 }
 
 /*Vector2D newVel = new Vector2D(super.getVelocity());
