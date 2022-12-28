@@ -3,6 +3,7 @@ package com.gdx.chasm.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -27,6 +28,7 @@ import com.gdx.chasm.baseClasses.Renderer;
 import com.gdx.chasm.baseClasses.Vector2D;
 import com.gdx.chasm.entities.*;
 import com.gdx.chasm.handlers.CollisionHandler;
+import com.gdx.chasm.handlers.CollisionSpawn;
 import com.gdx.chasm.handlers.EnemySpawn;
 import com.gdx.chasm.handlers.InputHandler;
 import com.sun.tools.javac.comp.Check;
@@ -63,6 +65,7 @@ public class GameScreen implements Screen {
     Rectangle resumeButton;
     Rectangle restartButton;
     Texture pauseMenuTexture;
+    Texture background;
     boolean paused;
     public GameScreen(final Chasm game){
         this.game = game;
@@ -72,12 +75,13 @@ public class GameScreen implements Screen {
         guiViewport = new FitViewport(1920, 1080, guiCamera);
         inputHandler = new InputHandler();
         pauseMenuTexture = new Texture(Gdx.files.internal("pause.png"));
+        background = new Texture(Gdx.files.internal("background.png"));
         Gdx.input.setInputProcessor(inputHandler);
         shapeRenderer = new ShapeRenderer();
         createMap();
-        createCollisions();
         createPlayer();
         collisions.add(player);
+        CollisionSpawn.createCollisions(map, collisions, unitScale);
         EnemySpawn.returnEnemies(unitScale, map, collisions);
         createGui();
         generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/04B_30__.TTF"));
@@ -203,9 +207,10 @@ public class GameScreen implements Screen {
         guiCamera.position.set(new Vector3((float)posX*60, (float)posY*60, 0));
     }
     public void draw(){
-        ScreenUtils.clear(0, 0, 0, 1);
-        drawMap();
+        Gdx.gl.glClearColor(0f,0f,0f,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
+        drawMap();
         Renderer.render(game.batch, collisions, camera);
         ArrayList<Rectangle> rest = new ArrayList<>();
         if(paused){
@@ -214,7 +219,6 @@ public class GameScreen implements Screen {
             rest.add(resumeButton);
         }
         drawGui();
-        //DebugRenderer.render(shapeRenderer, collisions, camera, rest);
     }
 
     public void drawGui(){
@@ -256,29 +260,14 @@ public class GameScreen implements Screen {
 
     public void drawMap(){
         mapRenderer.setView(camera);
-        mapRenderer.render();
+        mapRenderer.render(new int[]{0});
+        game.batch.begin();
+        game.batch.setProjectionMatrix(camera.combined);
+        game.batch.draw(background, camera.position.x - viewport.getWorldWidth()/2, camera.position.y - viewport.getWorldHeight()/2, 32, 18);
+        game.batch.end();
+        mapRenderer.render(new int[]{1, 2});
     }
 
-    public void createCollisions(){
-        MapLayer collision_layer = map.getLayers().get("collision_layer");
-        MapObjects collisions_objects = collision_layer.getObjects();
-        MapLayer checkpoint_layer = map.getLayers().get("checkpoints");
-        MapObjects checkpoint_objects = checkpoint_layer.getObjects();
-        for(MapObject o:collisions_objects){
-            if(o instanceof RectangleMapObject){
-                RectangleMapObject rec = (RectangleMapObject) o;
-                collisions.add(new CollisionEntity(rec.getRectangle().getX()*unitScale, rec.getRectangle().getY()*unitScale, rec.getRectangle().getWidth()*unitScale, rec.getRectangle().getHeight()*unitScale));
-            }
-        }
-        for(MapObject o:checkpoint_objects){
-            if(o instanceof RectangleMapObject){
-                RectangleMapObject rec = (RectangleMapObject) o;
-                MapProperties prop = o.getProperties();
-                int number = (int)prop.get("number");
-                collisions.add(new Checkpoint((double)rec.getRectangle().getX()*unitScale, (double)rec.getRectangle().getY()*unitScale, (double)rec.getRectangle().getWidth()*unitScale, (double)rec.getRectangle().getHeight()*unitScale, new Texture(Gdx.files.internal("player_idle.png")), number));
-            }
-        }
-    }
 
     public void createPlayer(){
         MapLayer spawn_layer = map.getLayers().get("spawn");

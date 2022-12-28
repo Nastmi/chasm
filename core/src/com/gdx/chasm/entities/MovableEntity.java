@@ -53,7 +53,7 @@ public abstract class MovableEntity extends Entity {
 
     @Override
     public void handleCollision(double intersectX, double intersectY, Entity e){
-        if(!(e instanceof Player)){
+        if(e instanceof CollisionEntity){
             this.setPosition(new Vector2D(this.getPosition().getX()+intersectX, this.getPosition().getY()+intersectY));
             this.getCollisionBox().setPosition(new Vector2D(this.getCollisionBox().getPosition().getX()+intersectX, this.getCollisionBox().getPosition().getY()+intersectY));
         }

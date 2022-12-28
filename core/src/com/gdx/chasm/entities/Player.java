@@ -175,12 +175,15 @@ public class Player extends MovableEntity {
                 }
             }
         }
-        else if(e instanceof MovableEntity){
-            this.isDead = true;
-        }
         else if(e instanceof Checkpoint){
             Checkpoint c = (Checkpoint) e;
             this.checkpointNumber = c.getNumber();
+        }
+        else if(e instanceof  DashRestore){
+            dashAllowed = true;
+        }
+        else if(e instanceof MovableEntity){
+            this.isDead = true;
         }
         else{
             this.setPosition(new Vector2D(this.getPosition().getX()+intersectX, this.getPosition().getY()+intersectY));

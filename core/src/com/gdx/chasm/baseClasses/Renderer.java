@@ -17,11 +17,6 @@ public class Renderer {
                 MovableEntity me = (MovableEntity) e;
                 batch.draw(me.getTexture(), (float) me.getPosition().getX(),(float) me.getPosition().getY(), (float)me.getWidth(), (float)me.getHeight());
             }
-            if(e instanceof Checkpoint){
-                Checkpoint c = (Checkpoint) e;
-                Rectangle r = (Rectangle)c.getCollisionBox();
-                batch.draw(c.getTexture(), (float) c.getCollisionBox().getPosition().getX(),(float) (float) c.getCollisionBox().getPosition().getY(), (float)r.getWidth(), (float)r.getHeight());
-            }
         }
         batch.end();
     }

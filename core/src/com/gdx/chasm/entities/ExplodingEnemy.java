@@ -76,7 +76,7 @@ public class ExplodingEnemy extends StateEnemy{
             if(e instanceof Player && this.state == ExplodingEnemyStates.LOOKOUT){
                 this.state = ExplodingEnemyStates.IN_CHASE;
             }
-            else if(this.state == ExplodingEnemyStates.IN_CHASE){
+            else if(this.state == ExplodingEnemyStates.IN_CHASE && e instanceof Player || e instanceof CollisionEntity){
                 this.explodeTimer = 0;
             }
         }

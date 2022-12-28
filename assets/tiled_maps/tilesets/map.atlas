@@ -1,0 +1,237 @@
+
+map.png
+size: 512, 16
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+grass
+  rotate: false
+  xy: 60, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: 3
+grass
+  rotate: false
+  xy: 168, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: 2
+grass
+  rotate: false
+  xy: 324, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: 1
+mushroom_big
+  rotate: false
+  xy: 24, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+mushroom_big_red
+  rotate: false
+  xy: 36, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+mushroom_lanky
+  rotate: false
+  xy: 312, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+mushroom_lanky_red
+  rotate: false
+  xy: 336, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+mushroom_small
+  rotate: false
+  xy: 204, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+mushroom_small_red
+  rotate: false
+  xy: 372, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_both_side
+  rotate: false
+  xy: 288, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_bottom_full
+  rotate: false
+  xy: 348, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_left_bottom
+  rotate: false
+  xy: 48, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_left_bottom_connector
+  rotate: false
+  xy: 192, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_left_side
+  rotate: false
+  xy: 216, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_left_top
+  rotate: false
+  xy: 360, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_left_top_connector
+  rotate: false
+  xy: 96, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_middle_bottom
+  rotate: false
+  xy: 156, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_middle_full
+  rotate: false
+  xy: 276, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_middle_top
+  rotate: false
+  xy: 228, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_right_bottom
+  rotate: false
+  xy: 72, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_right_bottom_connector
+  rotate: false
+  xy: 240, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_right_side
+  rotate: false
+  xy: 12, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_right_top
+  rotate: false
+  xy: 144, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_right_top_connector
+  rotate: false
+  xy: 0, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+rock_top_full
+  rotate: false
+  xy: 120, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+sign_death
+  rotate: false
+  xy: 132, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+sign_left
+  rotate: false
+  xy: 180, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+sign_right
+  rotate: false
+  xy: 384, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+sign_skull
+  rotate: false
+  xy: 252, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+totem_1_purple
+  rotate: false
+  xy: 108, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+totem_1_red
+  rotate: false
+  xy: 300, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+totem_2_purple
+  rotate: false
+  xy: 264, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+totem_2_red
+  rotate: false
+  xy: 84, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
