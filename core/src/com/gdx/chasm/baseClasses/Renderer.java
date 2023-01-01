@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.chasm.entities.Checkpoint;
 import com.gdx.chasm.entities.Entity;
 import com.gdx.chasm.entities.MovableEntity;
+import com.gdx.chasm.entities.Player;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class Renderer {
         for(Entity e:entities){
             if(e instanceof MovableEntity){
                 MovableEntity me = (MovableEntity) e;
-                batch.draw(me.getTexture(), (float) me.getPosition().getX(),(float) me.getPosition().getY(), (float)me.getWidth(), (float)me.getHeight());
+                batch.draw(me.getCurTexture(), (float) me.getPosition().getX(),(float) me.getPosition().getY(), (float)me.getWidth(), (float)me.getHeight());
             }
         }
         batch.end();

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapLayer;
@@ -67,6 +68,8 @@ public class GameScreen implements Screen {
     Texture pauseMenuTexture;
     Texture background;
     boolean paused;
+
+    TextureAtlas entityAtlas;
     public GameScreen(final Chasm game){
         this.game = game;
         camera = new OrthographicCamera();
@@ -78,11 +81,12 @@ public class GameScreen implements Screen {
         background = new Texture(Gdx.files.internal("background.png"));
         Gdx.input.setInputProcessor(inputHandler);
         shapeRenderer = new ShapeRenderer();
+        entityAtlas = new TextureAtlas(Gdx.files.internal("entities.atlas"));
         createMap();
         createPlayer();
         collisions.add(player);
-        CollisionSpawn.createCollisions(map, collisions, unitScale);
-        EnemySpawn.returnEnemies(unitScale, map, collisions);
+        CollisionSpawn.createCollisions(map, collisions, unitScale, entityAtlas);
+        EnemySpawn.returnEnemies(unitScale, map, collisions, entityAtlas);
         createGui();
         generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/04B_30__.TTF"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -108,7 +112,6 @@ public class GameScreen implements Screen {
         worldWidth = prop.get("width", Integer.class);
         worldHeight = prop.get("height", Integer.class);
         System.out.println(worldWidth);
-
     }
 
     @Override
@@ -219,6 +222,7 @@ public class GameScreen implements Screen {
             rest.add(resumeButton);
         }
         drawGui();
+        //DebugRenderer.render(shapeRenderer, collisions, camera, rest);
     }
 
     public void drawGui(){
@@ -273,7 +277,7 @@ public class GameScreen implements Screen {
         MapLayer spawn_layer = map.getLayers().get("spawn");
         MapObjects spawn_objects = spawn_layer.getObjects();
         TextureMapObject player_spawn = (TextureMapObject)spawn_objects.get("spawn_point");
-        player = new Player(1, 1, player_spawn.getX()*unitScale, player_spawn.getY()*unitScale, player_spawn.getX()*unitScale+0.33, player_spawn.getY()*unitScale, 0.5, 1, new Texture(Gdx.files.internal("player_idle.png")));
+        player = new Player(1, 1, player_spawn.getX()*unitScale, player_spawn.getY()*unitScale, player_spawn.getX()*unitScale+0.33, player_spawn.getY()*unitScale, 0.5, 1, new Texture(Gdx.files.internal("player_idle.png")), entityAtlas);
         spawn = new Vector2D(player_spawn.getX()*unitScale, player_spawn.getY()*unitScale);
         colSpawn = new Vector2D(player_spawn.getX()*unitScale+0.33, player_spawn.getY()*unitScale);
     }

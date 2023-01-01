@@ -1,13 +1,14 @@
 package com.gdx.chasm.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.gdx.chasm.baseClasses.Vector2D;
 
 import java.util.ArrayList;
 
 public abstract class StateEnemy extends MovableEntity{
-    public StateEnemy(double width, double height, double x, double y, double colX, double colY, double collisionWidth, double collisionHeight, Texture texture) {
-        super(width, height, x, y, colX, colY, collisionWidth, collisionHeight, texture);
+    public StateEnemy(double width, double height, double x, double y, double colX, double colY, double collisionWidth, double collisionHeight, Texture texture, TextureAtlas entityAtlas) {
+        super(width, height, x, y, colX, colY, collisionWidth, collisionHeight, texture, entityAtlas);
     }
 
     public StateEnemy(double width, double height, Vector2D position, Vector2D collisionPosition, double collisionWidth, double collisionHeight, Texture texture) {
@@ -22,6 +23,8 @@ public abstract class StateEnemy extends MovableEntity{
 
     @Override
     public void update(float delta, ArrayList<Entity> entities){
+        super.setCurTexture(curAnimation.getKeyFrame((float)super.getAnimationTime(), true));
+        super.setAnimationTime(super.getAnimationTime() + delta);
         handleStates();
         setSpeed(delta, entities);
     }

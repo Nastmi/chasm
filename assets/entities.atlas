@@ -1,0 +1,111 @@
+
+entities.png
+size: 1024, 32
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+blowfish_explode
+  rotate: false
+  xy: 0, 12
+  size: 216, 18
+  orig: 216, 18
+  offset: 0, 0
+  index: -1
+blowfish_grow
+  rotate: false
+  xy: 564, 12
+  size: 72, 18
+  orig: 72, 18
+  offset: 0, 0
+  index: -1
+blowfish_move
+  rotate: false
+  xy: 636, 12
+  size: 72, 18
+  orig: 72, 18
+  offset: 0, 0
+  index: -1
+blowfish_small
+  rotate: false
+  xy: 216, 12
+  size: 144, 18
+  orig: 144, 18
+  offset: 0, 0
+  index: -1
+checkpoint_green
+  rotate: false
+  xy: 708, 18
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+checkpoint_red
+  rotate: false
+  xy: 732, 18
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+checkpoint_transition
+  rotate: false
+  xy: 0, 0
+  size: 108, 12
+  orig: 108, 12
+  offset: 0, 0
+  index: -1
+dash_restore
+  rotate: false
+  xy: 468, 18
+  size: 96, 12
+  orig: 96, 12
+  offset: 0, 0
+  index: -1
+enemy_star
+  rotate: false
+  xy: 360, 12
+  size: 108, 18
+  orig: 108, 18
+  offset: 0, 0
+  index: -1
+player_fall
+  rotate: false
+  xy: 252, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+player_idle
+  rotate: false
+  xy: 204, 0
+  size: 24, 12
+  orig: 24, 12
+  offset: 0, 0
+  index: -1
+player_jump
+  rotate: false
+  xy: 228, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+player_run
+  rotate: false
+  xy: 108, 0
+  size: 96, 12
+  orig: 96, 12
+  offset: 0, 0
+  index: -1
+spikes_big
+  rotate: false
+  xy: 240, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+spikes_small
+  rotate: false
+  xy: 720, 18
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1

@@ -2,6 +2,7 @@ package com.gdx.chasm.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.gdx.chasm.baseClasses.Rectangle;
 import com.gdx.chasm.baseClasses.Vector2D;
 import com.gdx.chasm.states.ExplodingEnemyStates;
@@ -13,10 +14,13 @@ public class ExplodingEnemy extends StateEnemy{
     private ExplodingEnemyStates state;
     private double explodeTimer = 3;
     private double lifeTime = 1;
+    private boolean growing;
 
-    public ExplodingEnemy(double width, double height, double x, double y, double colX, double colY, double collisionWidth, double collisionHeight, Texture texture) {
-        super(width, height, x, y, colX, colY, collisionWidth, collisionHeight, texture);
+    public ExplodingEnemy(double width, double height, double x, double y, double colX, double colY, double collisionWidth, double collisionHeight, Texture texture, TextureAtlas entityAtlas) {
+        super(width, height, x, y, colX, colY, collisionWidth, collisionHeight, texture, entityAtlas);
         this.state = ExplodingEnemyStates.LOOKOUT;
+        super.setAnimation("small", 0.25, 18, 18, false);
+        this.growing = false;
     }
 
     public ExplodingEnemy(double width, double height, Vector2D position, Vector2D collisionPosition, double collisionWidth, double collisionHeight, Texture texture) {
@@ -25,12 +29,22 @@ public class ExplodingEnemy extends StateEnemy{
     }
 
     @Override
+    void createAnimations(TextureAtlas entityAtlas) {
+        super.animations.put("small", entityAtlas.findRegion("blowfish_small"));
+        super.animations.put("grow", entityAtlas.findRegion("blowfish_grow"));
+        super.animations.put("move", entityAtlas.findRegion("blowfish_move"));
+        super.animations.put("explode", entityAtlas.findRegion("blowfish_explode"));
+    }
+
+
+    @Override
     void handleStates() {
         if(this.state == ExplodingEnemyStates.LOOKOUT){
             this.setCollisionBox(new Rectangle(this.getWidth()+10, this.getHeight()+10, this.getPosition().getX()-5, this.getPosition().getY()-5));
         }
-        if(this.state == ExplodingEnemyStates.IN_CHASE){
+        if(this.state == ExplodingEnemyStates.IN_CHASE && !growing){
             this.setCollisionBox(new Rectangle(this.getWidth(), this.getHeight(), this.getPosition().getX(), this.getPosition().getY()));
+            super.setAnimation("grow", 0.25, 18, 18, false);
         }
         if(this.state == ExplodingEnemyStates.EXPLODING){
 
@@ -41,6 +55,12 @@ public class ExplodingEnemy extends StateEnemy{
 
     @Override
     void setSpeed(float delta, ArrayList<Entity> entities){
+        if(growing){
+            if(super.getCurAnimation().isAnimationFinished(delta)){
+                growing = false;
+                super.setAnimation("move", 0.1, 18, 18, false);
+            }
+        }
         if(this.state == ExplodingEnemyStates.IN_CHASE){
             double playerX = this.getPosition().getX();
             double playerY = this.getPosition().getY();
@@ -58,11 +78,8 @@ public class ExplodingEnemy extends StateEnemy{
         }
         if(explodeTimer <= 0 && this.state == ExplodingEnemyStates.IN_CHASE){
             this.state = ExplodingEnemyStates.EXPLODING;
-            this.setCollisionBox(new Rectangle(this.getWidth()+2, this.getHeight()+2, this.getPosition().getX()-1, this.getPosition().getY()-1));
+            this.setCollisionBox(new Rectangle(this.getWidth(), this.getHeight(), this.getPosition().getX(), this.getPosition().getY()));
             this.texture = new Texture(Gdx.files.internal("boom.png"));
-            this.setWidth(this.getWidth()+2);
-            this.setHeight(this.getHeight()+2);
-            this.setPosition(new Vector2D(this.getPosition().getX()-1, this.getPosition().getY()-1));
         }
         if(this.state == ExplodingEnemyStates.EXPLODING){
             this.setVelocity(new Vector2D(0,0));

@@ -4,6 +4,27 @@ size: 512, 16
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+blowfish_small_static
+  rotate: false
+  xy: 372, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+checkpoint_red
+  rotate: false
+  xy: 216, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+dash_restore_static
+  rotate: false
+  xy: 168, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
 empty
   rotate: false
   xy: 108, 0
@@ -20,14 +41,14 @@ grass
   index: 3
 grass
   rotate: false
-  xy: 180, 0
+  xy: 228, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: 2
 grass
   rotate: false
-  xy: 348, 0
+  xy: 432, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -48,42 +69,49 @@ mushroom_big_red
   index: -1
 mushroom_lanky
   rotate: false
-  xy: 336, 0
+  xy: 420, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 mushroom_lanky_red
   rotate: false
-  xy: 360, 0
+  xy: 444, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 mushroom_small
   rotate: false
-  xy: 216, 0
+  xy: 288, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 mushroom_small_red
   rotate: false
-  xy: 396, 0
+  xy: 480, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+player_fall
+  rotate: false
+  xy: 276, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_both_side
   rotate: false
-  xy: 312, 0
+  xy: 396, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_bottom_full
   rotate: false
-  xy: 372, 0
+  xy: 456, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -97,21 +125,21 @@ rock_left_bottom
   index: -1
 rock_left_bottom_connector
   rotate: false
-  xy: 204, 0
+  xy: 264, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_left_side
   rotate: false
-  xy: 228, 0
+  xy: 300, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_left_top
   rotate: false
-  xy: 384, 0
+  xy: 468, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -125,21 +153,21 @@ rock_left_top_connector
   index: -1
 rock_middle_bottom
   rotate: false
-  xy: 168, 0
+  xy: 204, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_middle_full
   rotate: false
-  xy: 300, 0
+  xy: 384, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 rock_middle_top
   rotate: false
-  xy: 240, 0
+  xy: 312, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -153,7 +181,7 @@ rock_right_bottom
   index: -1
 rock_right_bottom_connector
   rotate: false
-  xy: 252, 0
+  xy: 324, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -167,7 +195,7 @@ rock_right_side
   index: -1
 rock_right_top
   rotate: false
-  xy: 156, 0
+  xy: 192, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
@@ -181,63 +209,84 @@ rock_right_top_connector
   index: -1
 rock_top_full
   rotate: false
-  xy: 132, 0
+  xy: 144, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 sign_death
   rotate: false
-  xy: 144, 0
+  xy: 156, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 sign_left
   rotate: false
-  xy: 192, 0
+  xy: 240, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 sign_right
   rotate: false
-  xy: 408, 0
+  xy: 492, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 sign_skull
   rotate: false
-  xy: 264, 0
+  xy: 336, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 sky
   rotate: false
-  xy: 288, 0
+  xy: 360, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
-totem_1_purple
+spikes_big
+  rotate: false
+  xy: 180, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+spikes_small
   rotate: false
   xy: 120, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
+star_tile
+  rotate: false
+  xy: 252, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+totem_1_purple
+  rotate: false
+  xy: 132, 0
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
 totem_1_red
   rotate: false
-  xy: 324, 0
+  xy: 408, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 totem_2_purple
   rotate: false
-  xy: 276, 0
+  xy: 348, 0
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
